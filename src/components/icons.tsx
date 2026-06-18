@@ -26,6 +26,15 @@ export function GitHubIcon({ size = 19, className }: IconProps) {
   )
 }
 
+export function MailIcon({ size = 14, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className={className}>
+      <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+      <path d="m3 6.5 9 6.5 9-6.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 export function ArrowUpRight({ size = 13, className }: IconProps) {
   return (
     <svg

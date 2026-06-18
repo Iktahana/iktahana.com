@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { XIcon, ArrowUpRight } from './icons'
+import { XIcon, MailIcon, ArrowUpRight } from './icons'
 
 // アドレスは文字コードで保持し、バンドル内に平文（"hana"/"iktahana.com"/"@"）を残さない。
 // さらにクリックされるまで組み立て・描画しないため、初期DOM・mailto にも一切出ない。
@@ -37,14 +37,17 @@ export default function Contact() {
           }}
           className={`${rowClass} cursor-pointer`}
         >
-          <span className="text-[11px] uppercase tracking-[0.28em] text-[#646464]">Email</span>
+          <span className="inline-flex items-center gap-[9px] text-[11px] uppercase tracking-[0.28em] text-[#646464]">
+            <MailIcon size={14} />
+            Email
+          </span>
           <span className="text-[18px] text-[#f2f2f2]">
-            {email ?? '［ メールアドレスを表示 ］'}
+            {email ?? '［ クリックしてメールアドレスを表示 ］'}
           </span>
         </a>
         <a href="https://x.com/iktahana" target="_blank" rel="noopener" className={rowClass}>
           <span className="inline-flex items-center gap-[9px] text-[11px] uppercase tracking-[0.28em] text-[#646464]">
-            <XIcon size={14} />X · DM
+            <XIcon size={14} />DM
           </span>
           <span className="text-[18px] text-[#f2f2f2]">
             @iktahana へメッセージ
