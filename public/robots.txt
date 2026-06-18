@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://preview.iktahana.com/sitemap.xml
+Sitemap: https://iktahana.com/sitemap.xml
