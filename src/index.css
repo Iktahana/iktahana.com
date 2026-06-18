@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-mincho: 'Zen Old Mincho', serif;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background: #060606;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mincho);
+  color: #c8c8c8;
+  background: linear-gradient(to bottom, #050505 0%, #060606 72%, #0c0c0c 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #f0f0f0;
+  color: #060606;
+}

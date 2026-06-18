@@ -1,0 +1,18 @@
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# 抽出した一時アセット（public へ配置済み）
+_extracted
+iktahana-hp.standalone.html
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
