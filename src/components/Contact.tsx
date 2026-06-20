@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { XIcon, MailIcon, ArrowUpRight } from './icons'
 
-// アドレスは文字コードで保持し、バンドル内に平文（"hana"/"iktahana.com"/"@"）を残さない。
-// さらにクリックされるまで組み立て・描画しないため、初期DOM・mailto にも一切出ない。
-const USER = [104, 97, 110, 97] // hana
-const DOMAIN = [105, 107, 116, 97, 104, 97, 110, 97, 46, 99, 111, 109] // iktahana.com
+// アドレスは XOR（キー0x2a）で難読化して保持。バンドル内には平文も、
+// "@"=64 やドメインの連続ASCIIコード列も残らない（バイト列からパターンが消える）。
+// 初期HTMLには一切含めず、マウント時に復号して実際の mailto リンクを描画するため、
+// クリック不要で UX は自然。静的スクレイパー・素朴なJSコード走査の双方を無効化する。
+const KEY = 0x2a
+const ENC = [66, 75, 68, 75, 106, 67, 65, 94, 75, 66, 75, 68, 75, 4, 73, 69, 71]
 
 function buildEmail(): string {
-  return String.fromCharCode(...USER) + String.fromCharCode(64) + String.fromCharCode(...DOMAIN)
+  return String.fromCharCode(...ENC.map((b) => b ^ KEY))
 }
 
 const rowClass =
@@ -15,6 +17,11 @@ const rowClass =
 
 export default function Contact() {
   const [email, setEmail] = useState<string | null>(null)
+
+  // マウント後（ブラウザ実行時）にのみ復号。初期HTML・SSR出力には残さない。
+  useEffect(() => {
+    setEmail(buildEmail())
+  }, [])
 
   return (
     <section id="contact" className="mx-auto max-w-[560px] px-0 py-[90px] text-center">
@@ -28,21 +35,16 @@ export default function Contact() {
 
       <div className="border-t border-[#2d2d2d]">
         <a
-          href={email ? `mailto:${email}` : '#'}
-          onClick={(e) => {
-            if (!email) {
-              e.preventDefault()
-              setEmail(buildEmail())
-            }
-          }}
-          className={`${rowClass} cursor-pointer`}
+          href={email ? `mailto:${email}` : undefined}
+          className={rowClass}
         >
           <span className="inline-flex items-center gap-[9px] text-[11px] uppercase tracking-[0.28em] text-[#646464]">
             <MailIcon size={14} />
             Email
           </span>
           <span className="text-[18px] text-[#f2f2f2]">
-            {email ?? '［ クリックしてメールアドレスを表示 ］'}
+            {/* 復号前は非改行スペースで行の高さを確保し、レイアウトシフトを防ぐ */}
+            {email ?? ' '}
           </span>
         </a>
         <a href="https://x.com/iktahana" target="_blank" rel="noopener" className={rowClass}>
