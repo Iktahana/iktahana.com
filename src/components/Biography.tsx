@@ -13,7 +13,7 @@ export default function Biography() {
   return (
     <section className="mx-auto max-w-[980px] px-6 py-[90px]">
       <div className="grid grid-cols-[0.72fr_1fr] items-center gap-[56px] max-[760px]:grid-cols-1 max-[760px]:gap-8">
-        <div className="mx-auto aspect-[3/4] overflow-hidden rounded-[10px] border border-white/12 max-[760px]:max-w-[300px]">
+        <div className="mx-auto aspect-[3/4] w-full overflow-hidden rounded-[10px] border border-white/12 max-[760px]:max-w-[300px]">
           <img
             src="/portrait.jpg"
             alt="幾田 花"
