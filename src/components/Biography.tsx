@@ -16,7 +16,11 @@ export default function Biography() {
         <div className="mx-auto aspect-[3/4] w-full overflow-hidden rounded-[10px] border border-white/12 max-[760px]:max-w-[300px]">
           <img
             src="/portrait.jpg"
-            alt="幾田 花"
+            alt="幾田 花（いくた はな）の肖像"
+            width={1164}
+            height={1600}
+            loading="lazy"
+            decoding="async"
             className="block h-full w-full object-cover [object-position:center_30%]"
           />
         </div>
