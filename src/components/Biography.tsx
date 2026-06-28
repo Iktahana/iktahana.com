@@ -7,6 +7,14 @@ const entries = [
     year: '2025',
     text: '復学し、楊逸ゼミに参加。ダダイズム・モダニズム・新感覚派を基盤に「虚幻主義」の研究を開始。',
   },
+  {
+    year: '2025',
+    text: '復学し、楊逸ゼミに参加。ダダイズム・モダニズム・新感覚派を基盤に「虚幻主義」の研究を開始。',
+  },
+  {
+    year: '2026',
+    text: '第24回江古田文学賞にて、短編小説「雪女」が一次選考通過。',
+  },
 ]
 
 export default function Biography() {
@@ -16,7 +24,7 @@ export default function Biography() {
         <div className="mx-auto aspect-[3/4] w-full overflow-hidden rounded-[10px] border border-white/12 max-[760px]:max-w-[300px]">
           <img
             src="/portrait.jpg"
-            alt="幾田 花（いくた はな）の肖像"
+            alt="幾田 花"
             width={1164}
             height={1600}
             loading="lazy"
